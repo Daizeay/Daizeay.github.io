@@ -1,4 +1,4 @@
-/* Global styles */
+/* Global styles */ 
 body {
     background-color: white;
     color: #404040;
@@ -29,20 +29,21 @@ h1, h2, h3 {
     color: #A4A400;
     background-color: #F0F0F0;
     font-family: 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
-    padding: 5px;
+    padding: 10px;
     text-decoration: underline;
+    display: inline-block; 
+    width: auto;  /* Ensures the background only covers the width of the text */
+    box-sizing: border-box;
 }
 
 /* Specific sizes for h2 and h3 */
 h2 {
     font-size: 18pt;
-    display: inline; /* Makes the background only cover the text */
 }
 
 h3 {
     font-size: 18pt;
     font-weight: normal;
-    display: inline; /* Makes the background only cover the text */
 }
 
 /* Lists */
@@ -76,8 +77,8 @@ a:hover {
 footer {
     margin-top: 20px;
     text-align: center;
-    font-family: monospace; /* Monospace font for footer */
-    white-space: pre; /* Ensures pre-formatted text */
+    font-family: monospace;
+    white-space: pre;
 }
 
 footer p {
@@ -85,27 +86,26 @@ footer p {
 }
 
 /* Tooltip for tsp and tbsp */
-abbr {
+.tooltip {
     text-decoration: underline;
-    cursor: pointer;
-}
-
-/* Tooltip text */
-abbr[title] {
+    cursor: help; /* Changes cursor to indicate additional info */
     position: relative;
 }
 
-abbr[title]:hover::after {
+/* Tooltip text on hover */
+.tooltip:hover::after {
     content: attr(title);
     position: absolute;
     background-color: #FFFFA8;
+    color: #404040;
     padding: 5px;
     border-radius: 5px;
     font-size: 11pt;
-    top: -20px;
+    top: -25px;
     left: 0;
     white-space: nowrap;
     font-style: italic;
+    z-index: 10;
 }
 
 /* Favicon */
