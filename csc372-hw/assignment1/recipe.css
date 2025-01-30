@@ -127,3 +127,8 @@ link[rel="icon"] {
 .underlined {
     text-decoration: underline;
 }
+
+img {
+    display: block;  /* Treats the image as a block element */
+    margin-top: 20px; /* Adds space between the title and the image */
+}
