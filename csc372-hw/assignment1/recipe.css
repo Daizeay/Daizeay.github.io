@@ -115,12 +115,15 @@ link[rel="icon"] {
 
 /* User comment styles */
 .user-comment {
-    font-style: italic;
     background-color: #FFFFA8;
-    padding: 5px;
+    padding: 10px;
     margin: 10px 0;
 }
+.user-comment p {
+    font-style: italic;
+}
 
+/* Underlined links */
 .underlined {
     text-decoration: underline;
 }
