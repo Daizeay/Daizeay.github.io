@@ -1,0 +1,209 @@
+/*  
+   Name: Daisy Ibuoka
+   Date: 02.18.2025
+   CSC 372-01
+
+   Enhanced and modernized CSS styles for the Dine On Campus website.
+*/
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #333, #555);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Navigation */
+nav {
+    background: #222;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+nav a:hover {
+    color: #28a745;
+    transform: scale(1.1);
+}
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Recommendations Section */
+.recommendations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Restaurant Cards */
+.restaurant {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant:hover {
+    transform: translateY(-7px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Dish Gallery */
+.dish-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.dish-gallery img {
+    width: 120px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dish-gallery img:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dish Description */
+.dish-description {
+    display: none;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Meal Plan Section */
+.meal-plan {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.available-dishes, .your-meal-plan {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.available-dishes h2, .your-meal-plan h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+button, .add-dish {
+    padding: 12px 18px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .add-dish:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    margin-left: 10px;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Meal Plan List */
+#meal-plan-list li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .recommendations, .meal-plan {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .restaurant {
+        width: 90%;
+    }
+
+    .dish-gallery img {
+        width: 100px;
+    }
+
+    .available-dishes, .your-meal-plan {
+        width: 90%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

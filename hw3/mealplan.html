@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+  Name: Daisy Ibuoka
+  Date: 02.18.2025
+  CSC 372-01
+
+  Enhanced mealplan.html for the Dine On Campus project.
+  Features improved accessibility, structured content, and a polished UI.
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your own meal plan with delicious dishes from the best campus dining spots near UNCG's Petty Building.">
+    <meta name="author" content="Daisy Ibuoka">
+    <meta name="keywords" content="meal plan, UNCG dining, food options, campus meals">
+
+    <title>Meal Plan | Dine On Campus</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Create Your Meal Plan</h1>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mealplan.html">Create a Meal Plan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="meal-plan">
+            <div class="available-dishes">
+                <h2>Available Dishes</h2>
+                <ul class="dish-list">
+                    <li><button class="add-dish" data-dish="Margherita Pizza" data-price="8.99">🍕 Margherita Pizza - $8.99</button></li>
+                    <li><button class="add-dish" data-dish="Pepperoni Pizza" data-price="9.99">🍕 Pepperoni Pizza - $9.99</button></li>
+                    <li><button class="add-dish" data-dish="BBQ Chicken Pizza" data-price="10.99">🍕 BBQ Chicken Pizza - $10.99</button></li>
+                    <li><button class="add-dish" data-dish="Spicy Tuna Roll" data-price="10.99">🍣 Spicy Tuna Roll - $10.99</button></li>
+                    <li><button class="add-dish" data-dish="Salmon Avocado Roll" data-price="11.99">🍣 Salmon Avocado Roll - $11.99</button></li>
+                    <li><button class="add-dish" data-dish="California Roll" data-price="9.99">🍣 California Roll - $9.99</button></li>
+                    <li><button class="add-dish" data-dish="Carne Asada Taco" data-price="4.99">🌮 Carne Asada Taco - $4.99</button></li>
+                    <li><button class="add-dish" data-dish="Chicken Tinga Taco" data-price="4.49">🌮 Chicken Tinga Taco - $4.49</button></li>
+                    <li><button class="add-dish" data-dish="Veggie Taco" data-price="3.99">🌮 Veggie Taco - $3.99</button></li>
+                </ul>
+            </div>
+
+            <div class="your-meal-plan">
+                <h2>Your Meal Plan</h2>
+                <ul id="meal-plan-list"></ul>
+                <p><strong>Total: $<span id="total-amount">0.00</span></strong></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Dine On Campus | All rights reserved</p>
+    </footer>
+
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>
