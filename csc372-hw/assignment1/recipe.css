@@ -1,0 +1,134 @@
+/* Global styles */ 
+body {
+    background-color: white;
+    color: #404040;
+    font-family: Georgia, Garamond, serif;
+    background-image: url('silverware.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+/* Header styles */
+header h1 {
+    color: #A4A400;
+    background-color: #F0F0F0;
+    padding: 20px;
+    text-align: center;
+    font-size: 22pt;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Section styles */
+section {
+    margin: 20px;
+}
+
+/* Heading styles for h1, h2, h3 */
+h1, h2, h3 {
+    color: #A4A400;
+    background-color: #F0F0F0;
+    font-family: 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
+    padding: 10px;
+    text-decoration: underline;
+    display: inline-block; 
+    width: auto;  /* Ensures the background only covers the width of the text */
+    box-sizing: border-box;
+}
+
+/* Specific sizes for h2 and h3 */
+h2 {
+    font-size: 18pt;
+}
+
+h3 {
+    font-size: 18pt;
+    font-weight: normal;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+    background: url('pie_icon.gif') no-repeat left center;
+    padding-left: 25px;
+}
+
+/* Ordered list */
+ol {
+    padding-left: 20px;
+}
+
+/* Links */
+a {
+    color: #A4A400;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-family: monospace;
+    white-space: pre;
+}
+
+footer p {
+    font-size: 0.9em;
+}
+
+/* Tooltip for tsp and tbsp */
+.tooltip {
+    text-decoration: underline;
+    cursor: help; /* Changes cursor to indicate additional info */
+    position: relative;
+}
+
+/* Tooltip text on hover */
+.tooltip:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: #FFFFA8;
+    color: #404040;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 11pt;
+    top: -25px;
+    left: 0;
+    white-space: nowrap;
+    font-style: italic;
+    z-index: 10;
+}
+
+/* Favicon */
+link[rel="icon"] {
+    href: 'pie-icon.gif';
+}
+
+/* User comment styles */
+.user-comment {
+    background-color: #FFFFA8;
+    padding: 10px;
+    margin: 10px 0;
+}
+.user-comment p {
+    font-style: italic;
+}
+
+/* Underlined links */
+.underlined {
+    text-decoration: underline;
+}
+
+img {
+    display: block;  /* Treats the image as a block element */
+    margin-top: 20px; /* Adds space between the title and the image */
+}

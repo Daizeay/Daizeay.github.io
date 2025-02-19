@@ -1,0 +1,58 @@
+/* index.css */
+
+/* Set a clean font and background color */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the main heading */
+h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-top: 20px;
+}
+
+/* Style the links */
+a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Change link color on hover */
+a:hover {
+    color: #0056b3;
+}
+
+/* Style for the sections */
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for section headings */
+section h2 {
+    color: #f2b81d;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+/* Style for footer */
+footer {
+    background-color: #f2b81d;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
