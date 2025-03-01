@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+
+    <!-- Admin Navigation -->
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="admin-upload.html">Bulk Upload</a>
+        <a href="admin-products.html">Product Listing</a>
+        <a href="#">Sign Out</a>
+    </nav>
+
+    <!-- Dashboard Overview -->
+    <section class="dashboard-container">
+        <h2>Welcome, Admin</h2>
+        <p>Manage your store and products from the options below.</p>
+
+        <div class="admin-options">
+            <a href="admin-upload.html" class="admin-card">
+                <h3>📤 Bulk Upload</h3>
+                <p>Upload multiple products at once.</p>
+            </a>
+            
+            <a href="admin-products.html" class="admin-card">
+                <h3>📦 Product Listing</h3>
+                <p>View, edit, and manage products.</p>
+            </a>
+        </div>
+    </section>
+<script>
+    function signOut() {
+        localStorage.removeItem("adminLoggedIn"); // Remove admin session
+        window.location.href = "login.html"; // Redirect to login page
+    }
+</script>
+
+    <script>
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => document.body.insertAdjacentHTML("beforeend", data));
+    </script>
+
+</body>
+</html>
