@@ -1,0 +1,146 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // ✅ Ensure only logged-in users can access products page
+            if (!sessionStorage.getItem("userLoggedIn")) {
+                alert("❌ You must be signed in to view products.");
+                window.location.href = "login.html"; // Redirect to login page
+            }
+
+            // ✅ Handle Login/Logout button dynamically
+            const authLink = document.getElementById("auth-link");
+            if (sessionStorage.getItem("userLoggedIn")) {
+                authLink.textContent = "Log Out";
+                authLink.href = "#";
+                authLink.addEventListener("click", function () {
+                    sessionStorage.removeItem("userLoggedIn");
+                    alert("✅ You have been logged out.");
+                    window.location.href = "login.html";
+                });
+            }
+        });
+
+        function filterProducts(category) {
+            var selectedCategory = document.getElementById(category);
+            var allCategories = document.querySelectorAll('.product-category');
+
+            allCategories.forEach(function (categorySection) {
+                categorySection.style.display = 'none'; // Hide all categories
+            });
+
+            if (selectedCategory) {
+                selectedCategory.style.display = 'block'; // Show selected category
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html" id="auth-link">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="filters">
+        <button onclick="filterProducts('dresses')">Dresses</button>
+        <button onclick="filterProducts('shoes')">Shoes</button>
+        <button onclick="filterProducts('accessories')">Accessories</button>
+        <button onclick="filterProducts('twopiece')">Two Piece</button>
+        <button onclick="filterProducts('pants')">Pants</button>
+    </section>
+
+    <section class="product-list">
+        <div class="product-category" id="dresses">
+            <h2>Dresses</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="../public/images/product15dress.jfif" alt="Dress 1">
+                    <h3>Elegant Red Dress</h3>
+                    <p>$49.99</p>
+                    <a href="details.html?name=Elegant%20Red%20Dress&price=49.99&image=../public/images/product15dress.jfif&description=Beautiful%20and%20elegant%20red%20dress">View Details</a>
+                </div>
+                <div class="product">
+                    <img src="../public/images/product16dress.jfif" alt="Dress 2">
+                    <h3>Summer Floral Dress</h3>
+                    <p>$39.99</p>
+                    <a href="details.html?name=Summer%20Floral%20Dress&price=39.99&image=../public/images/product16dress.jfif&description=Lightweight%20and%20comfortable%20for%20summer">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-category" id="shoes">
+            <h2>Shoes</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="../public/images/product10shoe.jfif" alt="Shoes 1">
+                    <h3>Stylish Black Heels</h3>
+                    <p>$59.99</p>
+                    <a href="details.html?name=Stylish%20Black%20Heels&price=59.99&image=../public/images/product10shoe.jfif&description=Elegant%20heels%20for%20any%20occasion">View Details</a>
+                </div>
+                <div class="product">
+                    <img src="../public/images/product11shoe.jfif" alt="Shoes 2">
+                    <h3>Comfortable Sneakers</h3>
+                    <p>$39.99</p>
+                    <a href="details.html?name=Comfortable%20Sneakers&price=39.99&image=../public/images/product11shoe.jfif&description=Perfect%20for%20everyday%20wear">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-category" id="accessories">
+            <h2>Accessories</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="../public/images/product7acc.jfif" alt="Accessory 1">
+                    <h3>Gold Necklace</h3>
+                    <p>$29.99</p>
+                    <a href="details.html?name=Gold%20Necklace&price=29.99&image=../public/images/product7acc.jfif&description=Elegant%20gold%20necklace">View Details</a>
+                </div>
+                <div class="product">
+                    <img src="../public/images/product8acc.jfif" alt="Accessory 2">
+                    <h3>Classic Sunglasses</h3>
+                    <p>$19.99</p>
+                    <a href="details.html?name=Classic%20Sunglasses&price=19.99&image=../public/images/product8acc.jfif&description=Stylish%20and%20timeless%20sunglasses">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-category" id="twopiece">
+            <h2>Two Piece</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="../public/images/product2.webp" alt="Sporty Two-Piece Set">
+                    <h3>Sporty Two-Piece Set</h3>
+                    <p>$34.99</p>
+                    <a href="details.html?name=Sporty%20Two-Piece%20Set&price=34.99&image=../public/images/product2.webp&description=Stylish%20and%20comfortable%20sportswear">View Details</a>
+                </div>
+                <div class="product">
+                    <img src="../public/images/product3.jpg" alt="Casual Two-Piece Set">
+                    <h3>Casual Two-Piece Set</h3>
+                    <p>$29.99</p>
+                    <a href="details.html?name=Casual%20Two-Piece%20Set&price=29.99&image=../public/images/product3.jpg&description=Relaxed%20and%20fashionable%20casual%20outfit">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

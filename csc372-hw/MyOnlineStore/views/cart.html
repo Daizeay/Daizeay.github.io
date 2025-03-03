@@ -1,0 +1,77 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <script>
+        // ✅ Ensure only logged-in users can access the cart page
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!sessionStorage.getItem("userLoggedIn")) {
+                alert("❌ You must be signed in to access your cart.");
+                window.location.href = "login.html"; // Redirect to login
+            } else {
+                updateAuthLink(); // ✅ Show correct login/logout button
+            }
+        });
+
+        function signOut() {
+            sessionStorage.removeItem("userLoggedIn"); // ✅ Remove user session
+            sessionStorage.removeItem("cart"); // ✅ Optional: Clear cart on logout
+            alert("✅ Successfully logged out!");
+            window.location.href = "login.html"; // ✅ Redirect to login page
+        }
+
+        function updateAuthLink() {
+            const authLink = document.getElementById("auth-link");
+            if (sessionStorage.getItem("userLoggedIn")) {
+                authLink.innerHTML = "🚪 Logout";
+                authLink.setAttribute("href", "#");
+                authLink.setAttribute("onclick", "signOut()");
+            } else {
+                authLink.innerHTML = "Sign In";
+                authLink.setAttribute("href", "login.html");
+            }
+        }
+    </script>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+                <li><a href="login.html" id="auth-link">Sign In</a></li> <!-- ✅ Updated dynamically -->
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-items"></div>
+        <h3 id="cart-total"></h3>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Proceed to Checkout</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Online Store. All rights reserved.</p>
+    </footer>
+
+    <!-- ✅ Load scripts correctly -->
+    <script src="../routes/auth.js"></script> <!-- Handles login/logout -->
+    <script src="/js/cart.js"></script>
+
+</body>
+</html>

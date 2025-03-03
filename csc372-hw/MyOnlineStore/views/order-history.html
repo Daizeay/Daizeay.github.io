@@ -1,0 +1,89 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <script>
+        // ✅ Ensure only logged-in users can access order history
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!sessionStorage.getItem("userLoggedIn")) {
+                alert("❌ You must be signed in to view your order history.");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="order-history.html" class="active">Order History</a></li>
+                <li><a href="login.html" id="auth-link">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="order-history">
+        <h1>Your Order History</h1>
+        <div id="order-history-container"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Online Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function loadOrderHistory() {
+            let orders = JSON.parse(localStorage.getItem("orders")) || [];
+            const orderContainer = document.getElementById("order-history-container");
+            orderContainer.innerHTML = "";
+
+            if (orders.length === 0) {
+                orderContainer.innerHTML = "<p>📦 No past orders found.</p>";
+                return;
+            }
+
+            orders.forEach((order, index) => {
+                let orderHTML = `
+                    <div class="order-card">
+                        <h3>Order #${index + 1} - ${order.date}</h3>
+                        <ul>
+                `;
+
+                order.items.forEach(item => {
+                    orderHTML += `
+                        <li>
+                            <img src="${item.image}" alt="${item.name}" width="50">
+                            <strong>${item.name}</strong> - $${(item.price * item.quantity).toFixed(2)} (${item.quantity}x)
+                        </li>
+                    `;
+                });
+
+                orderHTML += `
+                        </ul>
+                        <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+                    </div>
+                `;
+                orderContainer.innerHTML += orderHTML;
+            });
+        }
+
+        window.onload = loadOrderHistory;
+    </script>
+
+</body>
+</html>

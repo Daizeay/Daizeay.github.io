@@ -1,0 +1,123 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Product Listing</title>
+    <link rel="stylesheet" href="../public/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <h1>Admin Panel</h1>
+        <ul>
+            <li><a href="dashboard.html">📊 Dashboard</a></li>
+            <li><a href="admin-upload.html">📂 Bulk Upload</a></li>
+            <li><a href="admin-products.html" class="active">🛍️ Product Listing</a></li>
+            <li><a href="#" onclick="signOut()">🚪 Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <!-- Product Listing Section -->
+    <section class="products-container">
+        <h2>🛍️ Admin Product Listing</h2>
+        <button onclick="window.location.href='product-edit.html'">➕ Add New Product</button>
+        <input type="text" id="search-bar" placeholder="🔍 Search products..." onkeyup="filterProducts()">
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price ($)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Products will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Online Store</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // ✅ Prevent unauthorized access
+            if (!sessionStorage.getItem("isAdminLoggedIn")) {
+                alert("❌ Unauthorized! Redirecting to login...");
+                window.location.href = "../auth/admin-login.html";
+            }
+
+            loadProducts();
+        });
+
+        function loadProducts() {
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            const tableBody = document.querySelector("#product-table tbody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            products.forEach(product => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>#${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.category}</td>
+                    <td>$${product.price.toFixed(2)}</td>
+                    <td>
+                        <button class="edit-btn" onclick="editProduct(${product.id})">✏️ Edit</button>
+                        <button class="delete-btn" onclick="deleteProduct(${product.id})">🗑️ Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function deleteProduct(id) {
+            if (confirm("Are you sure you want to delete this product?")) {
+                let products = JSON.parse(localStorage.getItem("products")) || [];
+                products = products.filter(product => product.id !== id);
+                localStorage.setItem("products", JSON.stringify(products));
+                loadProducts();
+            }
+        }
+
+        function editProduct(id) {
+            window.location.href = `product-edit.html?id=${id}`;
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+            const rows = document.querySelectorAll("#product-table tbody tr");
+
+            rows.forEach(row => {
+                const productName = row.cells[1].textContent.toLowerCase();
+                const productCategory = row.cells[2].textContent.toLowerCase();
+                if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        function signOut() {
+            sessionStorage.removeItem("isAdminLoggedIn");
+            window.location.href = "../auth/admin-login.html";
+        }
+    </script>
+
+</body>
+</html>

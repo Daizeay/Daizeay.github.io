@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the checkout page where users complete their purchase.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!sessionStorage.getItem("userLoggedIn")) {
+                alert("❌ You must be signed in to access checkout.");
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+
+    <header>
+        <h1>Checkout</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="checkout.html" class="active">Checkout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Order Summary</h2>
+        <div id="checkout-summary">
+            <p>Loading your order...</p>
+        </div>
+        <h3 id="total-price"></h3>
+        <button id="confirm-order" disabled>Confirm Order</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Online Store</p>
+    </footer>
+
+    <script src="../public/js/checkout.js"></script>
+</body>
+</html>

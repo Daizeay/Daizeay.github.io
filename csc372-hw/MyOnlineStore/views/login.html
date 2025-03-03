@@ -1,0 +1,83 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Vogue Avenue</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <img src="../public/images/logo.png" alt="Vogue Avenue Logo" class="logo">
+            <h1>Vogue Avenue</h1>
+        </div>
+    </header>
+
+    <!-- Sign In Form Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <h2>Welcome Back to Vogue Avenue</h2>
+            <form id="loginForm" class="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+            <p class="signup-prompt">Don't have an account? <a href="../views/signup.html">Sign up here</a></p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Vogue Avenue. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // ✅ Redirect logged-in users away from login page
+            if (sessionStorage.getItem("userLoggedIn")) {
+                window.location.href = "home.html";
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get user inputs
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            // ✅ Retrieve users from localStorage
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // ✅ Check if user exists
+            const userExists = users.find(user => user.username === username && user.password === password);
+
+            if (userExists) {
+                // ✅ Store session data to track login
+                sessionStorage.setItem("userLoggedIn", "true");
+                sessionStorage.setItem("currentUser", username);
+
+                alert("✅ Login successful! Redirecting...");
+                window.location.href = "home.html"; // Redirect to homepage
+            } else {
+                alert("❌ Invalid username or password. Please try again.");
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - Admin Panel</title>
+    <link rel="stylesheet" href="../public/css/admin.css">
+    <script src="../public/js/admin-users.js" defer></script>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="dashboard.html">📊 Dashboard</a></li>
+            <li><a href="admin-products.html">🛒 Manage Products</a></li>
+            <li><a href="admin-upload.html">📂 Bulk Upload</a></li>
+            <li><a href="admin-orders.html">📦 Orders</a></li>
+            <li><a href="admin-users.html" class="active">👥 Manage Users</a></li>
+            <li><a href="#" onclick="signOut()">🚪 Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <header>
+            <h1>Manage Users</h1>
+            <p>View and manage registered users</p>
+        </header>
+
+        <!-- Users List -->
+        <section class="users-container">
+            <h2>Registered Users</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="users-list">
+                    <tr><td colspan="3">Loading users...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>

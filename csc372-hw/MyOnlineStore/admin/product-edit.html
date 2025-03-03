@@ -1,0 +1,127 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="../public/css/admin.css">
+</head>
+<body>
+
+    <script>
+        // ✅ Ensure only admins can access this page using session authentication
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!sessionStorage.getItem("adminLoggedIn")) {
+                alert("❌ Access Denied! Admins only.");
+                window.location.href = "login.html"; // Redirect to login page
+            } else {
+                loadProductDetails(); // Load product details when page loads
+            }
+        });
+    </script>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="admin-upload.html">Bulk Upload</a></li>
+                <li><a href="admin-products.html">Manage Products</a></li>
+                <li><a href="#" id="admin-logout">Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="admin-edit">
+        <h1>Edit Product</h1>
+        <form id="edit-product-form">
+            <label>Product ID:</label>
+            <input type="text" id="product-id" readonly>
+
+            <label>Product Name:</label>
+            <input type="text" id="product-name">
+
+            <label>Description:</label>
+            <textarea id="product-description"></textarea>
+
+            <label>Category:</label>
+            <input type="text" id="product-category">
+
+            <label>Image Path:</label>
+            <input type="text" id="product-image">
+
+            <label>Price ($):</label>
+            <input type="number" id="product-price" step="0.01">
+
+            <button type="button" onclick="saveProduct()">Save Changes</button>
+            <button type="button" onclick="goBack()">Back</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Admin Dashboard</p>
+    </footer>
+
+    <script>
+        function loadProductDetails() {
+            // ✅ Get product data from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementById("product-id").value = urlParams.get('id') || "N/A";
+            document.getElementById("product-name").value = urlParams.get('name') || "";
+            document.getElementById("product-description").value = urlParams.get('description') || "";
+            document.getElementById("product-category").value = urlParams.get('category') || "";
+            document.getElementById("product-image").value = urlParams.get('image') || "";
+            document.getElementById("product-price").value = urlParams.get('price') || "";
+        }
+
+        function saveProduct() {
+            let product = {
+                id: document.getElementById("product-id").value,
+                name: document.getElementById("product-name").value,
+                description: document.getElementById("product-description").value,
+                category: document.getElementById("product-category").value,
+                image: document.getElementById("product-image").value,
+                price: parseFloat(document.getElementById("product-price").value)
+            };
+
+            // ✅ Ensure only an admin can update the product
+            if (!sessionStorage.getItem("adminLoggedIn")) {
+                alert("❌ Unauthorized! Admin access only.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            // ✅ Get stored products
+            let products = JSON.parse(sessionStorage.getItem("products")) || [];
+            let index = products.findIndex(p => p.id === product.id);
+
+            if (index !== -1) {
+                products[index] = product; // ✅ Update product
+                sessionStorage.setItem("products", JSON.stringify(products));
+                alert("✅ Product updated successfully!");
+                window.location.href = "admin-products.html"; // ✅ Redirect back
+            } else {
+                alert("⚠️ Product not found!");
+            }
+        }
+
+        function goBack() {
+            window.location.href = "admin-products.html";
+        }
+
+        // ✅ Admin Logout
+        document.getElementById("admin-logout").addEventListener("click", function () {
+            sessionStorage.removeItem("adminLoggedIn");
+            alert("✅ Logged out successfully.");
+            window.location.href = "login.html";
+        });
+
+    </script>
+
+</body>
+</html>

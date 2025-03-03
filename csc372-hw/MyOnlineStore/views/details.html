@@ -1,0 +1,110 @@
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <script>
+        // ✅ Ensure only logged-in users can access product details
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!sessionStorage.getItem("userLoggedIn")) {
+                alert("❌ You must be signed in to view product details.");
+                window.location.href = "login.html"; // Redirect to login page
+            }
+        });
+    </script>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html" id="auth-link">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="product-detail">
+        <div class="product-container">
+            <img id="product-image" src="images/product-placeholder.jpg" alt="Product Image">
+            <div class="product-info">
+                <h1 id="product-title">Product Name</h1>
+                <p id="product-price">$0.00</p>
+                <p id="product-description">Product description goes here.</p>
+                <button onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 My Online Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function getProductDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('name') || "Unknown Product";
+            const productPrice = parseFloat(urlParams.get('price')) || 0.00;
+            const productImage = urlParams.get('image') || "images/product-placeholder.jpg";
+            const productDescription = urlParams.get('description') || "No description available.";
+    
+            document.getElementById("product-title").textContent = productName;
+            document.getElementById("product-price").textContent = `$${productPrice.toFixed(2)}`;
+            document.getElementById("product-image").src = productImage;
+            document.getElementById("product-description").textContent = productDescription;
+        }
+    
+        function addToCart() {
+            const product = {
+                name: document.getElementById("product-title").textContent,
+                price: parseFloat(document.getElementById("product-price").textContent.replace("$", "")),
+                image: document.getElementById("product-image").src,
+                quantity: 1
+            };
+    
+            let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+            let existingProduct = cart.find(item => item.name === product.name);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1; // Increase quantity if already in cart
+            } else {
+                cart.push(product);
+            }
+
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+
+            alert("🛒 Product added to cart!");
+            window.location.href = "cart.html"; // Redirect to cart page
+        }
+
+        // ✅ Change login/logout link dynamically
+        document.addEventListener("DOMContentLoaded", function () {
+            const authLink = document.getElementById("auth-link");
+            if (sessionStorage.getItem("userLoggedIn")) {
+                authLink.textContent = "Log Out";
+                authLink.href = "#";
+                authLink.addEventListener("click", function () {
+                    sessionStorage.removeItem("userLoggedIn");
+                    alert("✅ You have been logged out.");
+                    window.location.href = "login.html";
+                });
+            }
+        });
+
+        window.onload = getProductDetails;
+    </script>
+    
+</body>
+</html>
