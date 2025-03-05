@@ -5,7 +5,7 @@
 
   This is the added html page 
 -->
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,96 +15,97 @@
 </head>
 <body>
 
-    <script>
-        // ✅ Ensure only logged-in users can access product details
-        document.addEventListener("DOMContentLoaded", function () {
-            if (!sessionStorage.getItem("userLoggedIn")) {
-                alert("❌ You must be signed in to view product details.");
-                window.location.href = "login.html"; // Redirect to login page
-            }
-        });
-    </script>
+<script>
+    // ✅ Ensure only logged-in users can access product details
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!sessionStorage.getItem("userLoggedIn")) {
+            alert("❌ You must be signed in to view product details.");
+            window.location.href = "login.html"; // Redirect to login page
+        } else {
+            getProductDetails();
+            updateAuthLink();
+        }
+    });
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="login.html" id="auth-link">Sign In</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="product-detail">
-        <div class="product-container">
-            <img id="product-image" src="images/product-placeholder.jpg" alt="Product Image">
-            <div class="product-info">
-                <h1 id="product-title">Product Name</h1>
-                <p id="product-price">$0.00</p>
-                <p id="product-description">Product description goes here.</p>
-                <button onclick="addToCart()">Add to Cart</button>
-            </div>
+    function updateAuthLink() {
+        const authLink = document.getElementById("auth-link");
+        if (sessionStorage.getItem("userLoggedIn")) {
+            authLink.textContent = "Log Out";
+            authLink.href = "#";
+            authLink.addEventListener("click", function() {
+                sessionStorage.removeItem("userLoggedIn");
+                alert("✅ You have been logged out.");
+                window.location.href = "login.html";
+            });
+        } else {
+            authLink.textContent = "Sign In";
+            authLink.href = "login.html";
+        }
+    }
+</script>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html" id="auth-link">Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="product-detail">
+    <div class="product-container">
+        <img id="product-image" src="images/product-placeholder.jpg" alt="Product Image">
+        <div class="product-info">
+            <h1 id="product-title">Product Name</h1>
+            <p id="product-price">$0.00</p>
+            <p id="product-description">Product description here.</p>
+            <button onclick="addToCart()">Add to Cart</button>
         </div>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 My Online Store. All rights reserved.</p>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        function getProductDetails() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const productName = urlParams.get('name') || "Unknown Product";
-            const productPrice = parseFloat(urlParams.get('price')) || 0.00;
-            const productImage = urlParams.get('image') || "images/product-placeholder.jpg";
-            const productDescription = urlParams.get('description') || "No description available.";
-    
-            document.getElementById("product-title").textContent = productName;
-            document.getElementById("product-price").textContent = `$${productPrice.toFixed(2)}`;
-            document.getElementById("product-image").src = productImage;
-            document.getElementById("product-description").textContent = productDescription;
-        }
-    
-        function addToCart() {
-            const product = {
-                name: document.getElementById("product-title").textContent,
-                price: parseFloat(document.getElementById("product-price").textContent.replace("$", "")),
-                image: document.getElementById("product-image").src,
-                quantity: 1
-            };
-    
-            let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-            let existingProduct = cart.find(item => item.name === product.name);
+<footer>
+    <p>&copy; 2025 My Online Store. All rights reserved.</p>
+</footer>
 
-            if (existingProduct) {
-                existingProduct.quantity += 1; // Increase quantity if already in cart
-            } else {
-                cart.push(product);
+<script>
+    function getProductDetails() {
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById("product-title").textContent = urlParams.get("name") || "Unknown Product";
+        document.getElementById("product-price").textContent = `$${parseFloat(urlParams.get("price") || 0).toFixed(2)}`;
+        document.getElementById("product-image").src = urlParams.get("image") || "images/product-placeholder.jpg";
+        document.getElementById("product-description").textContent = urlParams.get("description") || "No description available.";
+    }
+
+    function addToCart() {
+        const product = {
+            name: document.getElementById("product-title").textContent,
+            price: parseFloat(document.getElementById("product-price").textContent.replace("$", "")),
+            image: document.getElementById("product-image").src,
+            quantity: 1
+        };
+
+        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let existingProduct = cart.find(item => item.name === product.name);
+
+        if (existingProduct) {
+            existingProduct.quantity += 1; // Increase quantity if already in cart
+        } else {
+            if (cart.length >= 3) {
+                alert("❌ You can only add up to 3 different items to your cart.");
+                return;
             }
-
-            sessionStorage.setItem("cart", JSON.stringify(cart));
-
-            alert("🛒 Product added to cart!");
-            window.location.href = "cart.html"; // Redirect to cart page
+            cart.push(product);
         }
 
-        // ✅ Change login/logout link dynamically
-        document.addEventListener("DOMContentLoaded", function () {
-            const authLink = document.getElementById("auth-link");
-            if (sessionStorage.getItem("userLoggedIn")) {
-                authLink.textContent = "Log Out";
-                authLink.href = "#";
-                authLink.addEventListener("click", function () {
-                    sessionStorage.removeItem("userLoggedIn");
-                    alert("✅ You have been logged out.");
-                    window.location.href = "login.html";
-                });
-            }
-        });
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        alert("🛒 Product added to cart!");
+        window.location.href = "cart.html"; // Redirect to cart page
+    }
+</script>
 
-        window.onload = getProductDetails;
-    </script>
-    
 </body>
 </html>

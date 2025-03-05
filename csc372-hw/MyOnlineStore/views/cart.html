@@ -3,9 +3,9 @@
   Date: 03.01.2025
   CSC 372-01
 
-  This is the added html page 
+  This is the updated shopping cart page
 -->
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,44 +15,13 @@
 </head>
 <body>
 
-    <script>
-        // ✅ Ensure only logged-in users can access the cart page
-        document.addEventListener("DOMContentLoaded", function () {
-            if (!sessionStorage.getItem("userLoggedIn")) {
-                alert("❌ You must be signed in to access your cart.");
-                window.location.href = "login.html"; // Redirect to login
-            } else {
-                updateAuthLink(); // ✅ Show correct login/logout button
-            }
-        });
-
-        function signOut() {
-            sessionStorage.removeItem("userLoggedIn"); // ✅ Remove user session
-            sessionStorage.removeItem("cart"); // ✅ Optional: Clear cart on logout
-            alert("✅ Successfully logged out!");
-            window.location.href = "login.html"; // ✅ Redirect to login page
-        }
-
-        function updateAuthLink() {
-            const authLink = document.getElementById("auth-link");
-            if (sessionStorage.getItem("userLoggedIn")) {
-                authLink.innerHTML = "🚪 Logout";
-                authLink.setAttribute("href", "#");
-                authLink.setAttribute("onclick", "signOut()");
-            } else {
-                authLink.innerHTML = "Sign In";
-                authLink.setAttribute("href", "login.html");
-            }
-        }
-    </script>
-
     <header>
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="cart.html" class="active">Cart</a></li>
-                <li><a href="login.html" id="auth-link">Sign In</a></li> <!-- ✅ Updated dynamically -->
+                <li><a href="login.html" id="auth-link">Sign In</a></li>
             </ul>
         </nav>
     </header>
@@ -69,9 +38,81 @@
         <p>&copy; 2025 My Online Store. All rights reserved.</p>
     </footer>
 
-    <!-- ✅ Load scripts correctly -->
-    <script src="../routes/auth.js"></script> <!-- Handles login/logout -->
-    <script src="/js/cart.js"></script>
+    <script>
+        // ✅ Ensure only logged-in users can access the cart page
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!sessionStorage.getItem("userLoggedIn")) {
+                alert("❌ You must be signed in to access your cart.");
+                window.location.href = "login.html";
+            } else {
+                updateAuthLink();
+                loadCart();
+            }
+        });
+
+        function updateAuthLink() {
+            const authLink = document.getElementById("auth-link");
+            if (sessionStorage.getItem("userLoggedIn")) {
+                authLink.textContent = "🚪 Logout";
+                authLink.href = "#";
+                authLink.onclick = function () {
+                    sessionStorage.removeItem("userLoggedIn");
+                    sessionStorage.removeItem("cart");
+                    alert("✅ Successfully logged out!");
+                    window.location.href = "login.html";
+                };
+            } else {
+                authLink.textContent = "Sign In";
+                authLink.href = "login.html";
+            }
+        }
+
+        function loadCart() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            const cartTotal = document.getElementById("cart-total");
+            cartItemsContainer.innerHTML = "";
+            cartTotal.textContent = "";
+
+            let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            // Display maximum of 3 items
+            cart.slice(0, 3).forEach(item => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("cart-item");
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" width="80">
+                    <p><strong>${item.name}</strong></p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Price: $${(item.price * item.quantity).toFixed(2)}</p>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            // Verify at least one item with quantity 2 or more
+            const hasMultipleQty = cart.some(item => item.quantity >= 2);
+            if (!hasMultipleQty) {
+                alert("⚠️ Your cart must include at least one item with quantity 2 or more.");
+            }
+
+            // Calculate total price
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function clearCart() {
+            sessionStorage.removeItem("cart");
+            loadCart();
+        }
+
+        function checkout() {
+            window.location.href = "checkout.html";
+        }
+    </script>
 
 </body>
 </html>
