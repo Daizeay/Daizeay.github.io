@@ -1,10 +1,10 @@
 // Game Choices
 const choices = ["rock", "paper", "scissors"];
 const images = {
-    rock: "images/rock.png",
-    paper: "images/paper.png",
-    scissors: "images/scissors.png",
-    question: "images/question.png"
+    rock: "images/rock.PNG",
+    paper: "images/paper.PNG",
+    scissors: "images/scissors.PNG",
+    question: "images/question.PNG"
 };
 
 // Sounds
