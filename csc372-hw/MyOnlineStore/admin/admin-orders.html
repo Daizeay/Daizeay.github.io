@@ -5,6 +5,116 @@
 
   This is the added html page 
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Orders</title>
+    <link rel="stylesheet" href="../public/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <h1>Admin Panel</h1>
+        <ul>
+            <li><a href="dashboard.html">📊 Dashboard</a></li>
+            <li><a href="admin-upload.html">📂 Bulk Upload</a></li>
+            <li><a href="admin-products.html">🛍️ Product Listing</a></li>
+            <li><a href="admin-order.html" class="active">📦 Orders</a></li>
+            <li><a href="#">🚪 Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <!-- Orders Section -->
+    <section class="orders-container">
+        <h2>📦 Manage Orders</h2>
+
+        <table id="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Total ($)</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1001</td>
+                    <td>John Doe</td>
+                    <td>$89.99</td>
+                    <td>
+                        <select class="order-status">
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                    </td>
+                    <td><button class="update-btn">Update</button></td>
+                </tr>
+                <tr>
+                    <td>#1002</td>
+                    <td>Jane Smith</td>
+                    <td>$120.50</td>
+                    <td>
+                        <select class="order-status">
+                            <option value="Pending">Pending</option>
+                            <option value="Shipped" selected>Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                    </td>
+                    <td><button class="update-btn">Update</button></td>
+                </tr>
+                <tr>
+                    <td>#1003</td>
+                    <td>Alice Johnson</td>
+                    <td>$45.00</td>
+                    <td>
+                        <select class="order-status">
+                            <option value="Pending">Pending</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered" selected>Delivered</option>
+                        </select>
+                    </td>
+                    <td><button class="update-btn">Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+-->
+ 
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,3 +211,4 @@
 
 </body>
 </html>
+-->

@@ -3,8 +3,84 @@
   Date: 03.01.2025
   CSC 372-01
 
-  This is the added html page 
+  Static Prototype - Edit Product Page
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="../public/css/admin.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="admin-upload.html">Bulk Upload</a></li>
+                <li><a href="admin-products.html">Manage Products</a></li>
+                <li><a href="login.html">Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="admin-edit">
+        <h1>Edit Product</h1>
+        <form>
+            <label>Product ID:</label>
+            <input type="text" value="P1001" readonly>
+
+            <label>Product Name:</label>
+            <input type="text" value="Wireless Headphones">
+
+            <label>Description:</label>
+            <textarea>High-quality noise-canceling wireless headphones.</textarea>
+
+            <label>Category:</label>
+            <input type="text" value="Electronics">
+
+            <label>Image Path:</label>
+            <input type="text" value="../public/images/headphones.jpg">
+
+            <label>Price ($):</label>
+            <input type="number" value="199.99" step="0.01">
+
+            <button type="button">Save Changes</button>
+            <button type="button" onclick="window.location.href='admin-products.html'">Back</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Admin Dashboard</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+
   <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,3 +201,4 @@
 
 </body>
 </html>
+-->

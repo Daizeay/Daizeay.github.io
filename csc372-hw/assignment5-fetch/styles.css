@@ -1,0 +1,82 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    margin-top: 10px;
+}
+
+#username {
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+}
+
+#search-btn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#search-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Gallery Styling */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Repository Card Styling */
+.repo-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.repo-card h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.repo-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+.repo-card .repo-links {
+    margin-top: 10px;
+}
+
+.repo-card .repo-links a {
+    text-decoration: none;
+    color: #0366d6;
+}
+
+/* GitHub Icon */
+.repo-name {
+    font-weight: bold;
+}
+
+.repo-name i {
+    margin-right: 5px;
+}

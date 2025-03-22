@@ -3,8 +3,114 @@
   Date: 03.01.2025
   CSC 372-01
 
-  This is the updated shopping cart page
+  This is the updated static shopping cart page
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+                <li><a href="login.html">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart">
+        <h1>Your Shopping Cart</h1>
+        
+        <!-- Hardcoded cart items -->
+        <div id="cart-items">
+            <div class="cart-item">
+                <img src="product1.jpg" alt="Product 1" width="80">
+                <p><strong>Product 1</strong></p>
+                <p>Quantity: 2</p>
+                <p>Price: $20.00</p>
+            </div>
+            <div class="cart-item">
+                <img src="product2.jpg" alt="Product 2" width="80">
+                <p><strong>Product 2</strong></p>
+                <p>Quantity: 1</p>
+                <p>Price: $15.00</p>
+            </div>
+            <div class="cart-item">
+                <img src="product3.jpg" alt="Product 3" width="80">
+                <p><strong>Product 3</strong></p>
+                <p>Quantity: 1</p>
+                <p>Price: $10.00</p>
+            </div>
+        </div>
+
+        <!-- Hardcoded total price -->
+        <h3 id="cart-total">Total: $65.00</h3>
+
+        <!-- Buttons for actions -->
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Proceed to Checkout</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Online Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Static version: Removed dynamic JS -->
+    <script>
+        // Placeholder functions, can be removed or kept as placeholder for future dynamic features
+        function clearCart() {
+            alert("Cart cleared!");
+            // In static mode, this would just show an alert, no data to clear
+        }
+
+        function checkout() {
+            alert("Proceeding to checkout!");
+            // In static mode, this would just show an alert, no real checkout process
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the updated shopping cart page
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,3 +222,4 @@
 
 </body>
 </html>
+-->

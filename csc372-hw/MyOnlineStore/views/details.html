@@ -3,8 +3,102 @@
   Date: 03.01.2025
   CSC 372-01
 
-  This is the added html page 
+  This is the static product details page.
 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html" id="auth-link">Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="product-detail">
+    <div class="product-container">
+        <!-- Static image, name, price, and description -->
+        <img id="product-image" src="images/product-placeholder.jpg" alt="Product Image">
+        <div class="product-info">
+            <h1 id="product-title">Sample Product</h1>
+            <p id="product-price">$25.00</p>
+            <p id="product-description">This is a sample product description. It provides all the essential details about the product.</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 My Online Store. All rights reserved.</p>
+</footer>
+
+<script>
+    // Static cart functionality (no dynamic behavior, hardcoded data)
+    function addToCart() {
+        const product = {
+            name: "Sample Product",
+            price: 25.00,
+            image: "images/product-placeholder.jpg",
+            quantity: 1
+        };
+
+        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let existingProduct = cart.find(item => item.name === product.name);
+
+        if (existingProduct) {
+            existingProduct.quantity += 1; // Increase quantity if already in cart
+        } else {
+            if (cart.length >= 3) {
+                alert("❌ You can only add up to 3 different items to your cart.");
+                return;
+            }
+            cart.push(product);
+        }
+
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        alert("🛒 Product added to cart!");
+        window.location.href = "cart.html"; // Redirect to cart page
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
+
+  This is the added html page 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,3 +203,4 @@
 
 </body>
 </html>
+-->

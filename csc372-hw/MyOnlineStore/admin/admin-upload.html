@@ -3,9 +3,81 @@ Name: Daisy Ibuoka
 Date: 03.01.2025
 CSC 372-01
 
+Static Prototype - Admin Bulk Upload
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Bulk Upload</title>
+    <link rel="stylesheet" href="../public/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <h1>Admin Panel</h1>
+        <ul>
+            <li><a href="dashboard.html">📊 Dashboard</a></li>
+            <li><a href="admin-upload.html" class="active">📂 Bulk Upload</a></li>
+            <li><a href="admin-products.html">🛍️ Product Listing</a></li>
+            <li><a href="#">🚪 Sign Out</a></li>
+        </ul>
+    </nav>
+
+    <!-- Upload Section -->
+    <section class="upload-container">
+        <h2>📤 Bulk Upload Products</h2>
+
+        <form>
+            <label for="upload-file">Upload JSON/CSV File:</label>
+            <input type="file" id="upload-file" accept=".json, .csv" disabled>
+            <button type="button">Upload</button>
+        </form>
+
+        <p id="upload-status">⚠️ Upload functionality is disabled in this prototype.</p>
+        <a href="../public/sample-products.json" download class="download-link">📥 Download Sample JSON Format</a>
+
+        <pre class="json-example">
+Example JSON format:
+[
+  { "id": 1, "name": "Product A", "price": 10.99, "category": "Electronics" }
+]
+        </pre>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Online Store</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+Name: Daisy Ibuoka
+Date: 03.01.2025
+CSC 372-01
+
 This script handles admin authentication and product bulk upload.
 
--->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,3 +165,4 @@ Example JSON format:
 
 </body>
 </html>
+-->
