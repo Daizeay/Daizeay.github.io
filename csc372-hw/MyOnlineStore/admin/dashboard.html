@@ -21,9 +21,10 @@
         <ul>
             <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
             <li><a href="admin-products.html">🛒 Manage Products</a></li>
+            <li><a href="product-edit.html">🛠️ Edit Product</a></li> <!-- ✅ New link added -->
             <li><a href="admin-upload.html">📂 Bulk Upload</a></li>
             <li><a href="admin-orders.html">📦 Orders</a></li>
-            <li><a href="admin-users.html">👥 Manage Users</a></li>
+            <li><a href="admin-user.html">👥 Manage Users</a></li>
             <li><a href="#">🚪 Logout</a></li>
         </ul>
     </aside>
@@ -39,15 +40,15 @@
         <section class="stats-container">
             <div class="stat-box">
                 <h3>📦 Total Products</h3>
-                <p>1,250</p> <!-- Static number -->
+                <p>1,250</p>
             </div>
             <div class="stat-box">
                 <h3>📈 Total Sales</h3>
-                <p>$24,750.00</p> <!-- Static number -->
+                <p>$24,750.00</p>
             </div>
             <div class="stat-box">
                 <h3>👥 Total Users</h3>
-                <p>857</p> <!-- Static number -->
+                <p>857</p>
             </div>
         </section>
 
@@ -101,95 +102,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOC<!--
-    Name: Daisy Ibuoka
-    Date: 03.01.2025
-    CSC 372-01
-  
-    This is the added html page 
-
-    TYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../public/css/admin.css">
-    <script src="../public/js/admin-dashboard.js" defer></script>
-</head>
-<body>
-
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-        <h2>Admin Panel</h2>
-        <ul>
-            <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
-            <li><a href="admin-products.html">🛒 Manage Products</a></li>
-            <li><a href="admin-upload.html">📂 Bulk Upload</a></li>
-            <li><a href="admin-orders.html">📦 Orders</a></li>
-            <li><a href="admin-users.html">👥 Manage Users</a></li>
-            <li><a href="#" onclick="signOut()">🚪 Logout</a></li>
-        </ul>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="dashboard-container">
-        <header>
-            <h1>Welcome, Admin</h1>
-            <p>Manage your store efficiently</p>
-        </header>
-
-        <!-- Quick Stats Section -->
-        <section class="stats-container">
-            <div class="stat-box">
-                <h3>📦 Total Products</h3>
-                <p id="total-products">Loading...</p>
-            </div>
-            <div class="stat-box">
-                <h3>📈 Total Sales</h3>
-                <p id="total-sales">$0.00</p>
-            </div>
-            <div class="stat-box">
-                <h3>👥 Total Users</h3>
-                <p id="total-users">Loading...</p>
-            </div>
-        </section>
-
-        <!-- Recent Activities -->
-        <section class="recent-activities">
-            <h2>Recent Orders</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody id="recent-orders">
-                    <tr><td colspan="5">Loading orders...</td></tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-
-</body>
-</html>
--->

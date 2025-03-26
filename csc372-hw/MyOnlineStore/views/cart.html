@@ -1,90 +1,92 @@
-<!--
+<!-- 
   Name: Daisy Ibuoka
   Date: 03.01.2025
   CSC 372-01
 
-  This is the updated static shopping cart page
+  Static Prototype - Shopping Cart Page
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="../public/css/styles.css" />
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="cart.html" class="active">Cart</a></li>
-                <li><a href="login.html">Sign In</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Header to match products.html -->
+<header>
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="cart.html" class="active">Cart</a></li>
+      <li><a href="login.html">Sign In</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <section class="cart">
-        <h1>Your Shopping Cart</h1>
-        
-        <!-- Hardcoded cart items -->
-        <div id="cart-items">
-            <div class="cart-item">
-                <img src="product1.jpg" alt="Product 1" width="80">
-                <p><strong>Product 1</strong></p>
-                <p>Quantity: 2</p>
-                <p>Price: $20.00</p>
-            </div>
-            <div class="cart-item">
-                <img src="product2.jpg" alt="Product 2" width="80">
-                <p><strong>Product 2</strong></p>
-                <p>Quantity: 1</p>
-                <p>Price: $15.00</p>
-            </div>
-            <div class="cart-item">
-                <img src="product3.jpg" alt="Product 3" width="80">
-                <p><strong>Product 3</strong></p>
-                <p>Quantity: 1</p>
-                <p>Price: $10.00</p>
-            </div>
-        </div>
+<!-- Cart Section -->
+<section class="cart">
+  <h1>Your Shopping Cart</h1>
 
-        <!-- Hardcoded total price -->
-        <h3 id="cart-total">Total: $65.00</h3>
+  <!-- Cart Items -->
+  <div id="cart-items">
+    <div class="cart-item">
+      <img src="../public/images/product15dress.jfif" alt="Elegant Red Dress" width="80" />
+      <div>
+        <p><strong>Elegant Red Dress</strong></p>
+        <p>Price: $49.99</p>
+        <label>Quantity: <input type="number" value="2" min="1" /></label>
+        <p>Total: $99.98</p>
+        <button>Remove</button>
+      </div>
+    </div>
 
-        <!-- Buttons for actions -->
-        <button onclick="clearCart()">Clear Cart</button>
-        <button onclick="checkout()">Proceed to Checkout</button>
-    </section>
+    <div class="cart-item">
+      <img src="../public/images/product10shoe.jfif" alt="Stylish Black Heels" width="80" />
+      <div>
+        <p><strong>Stylish Black Heels</strong></p>
+        <p>Price: $59.99</p>
+        <label>Quantity: <input type="number" value="1" min="1" /></label>
+        <p>Total: $59.99</p>
+        <button>Remove</button>
+      </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 My Online Store. All rights reserved.</p>
-    </footer>
+    <div class="cart-item">
+      <img src="../public/images/product11shoe.jfif" alt="Comfortable Sneakers" width="80" />
+      <div>
+        <p><strong>Comfortable Sneakers</strong></p>
+        <p>Price: $39.99</p>
+        <label>Quantity: <input type="number" value="1" min="1" /></label>
+        <p>Total: $39.99</p>
+        <button>Remove</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- Static version: Removed dynamic JS -->
-    <script>
-        // Placeholder functions, can be removed or kept as placeholder for future dynamic features
-        function clearCart() {
-            alert("Cart cleared!");
-            // In static mode, this would just show an alert, no data to clear
-        }
+  <!-- Cart Summary -->
+  <section class="cart-summary">
+    <h3>Subtotal: $199.96</h3>
+    <p>Tax (6.75%): $13.49</p>
+    <p>Delivery Fee: $5.00</p>
+    <p>Service Fee (Downloadable items only): $0.00</p>
+    <h2>Total: $218.45</h2>
+  </section>
 
-        function checkout() {
-            alert("Proceeding to checkout!");
-            // In static mode, this would just show an alert, no real checkout process
-        }
-    </script>
+  <button onclick="alert('Cart cleared!')">Clear Cart</button>
+  <button onclick="alert('Proceeding to checkout!')">Proceed to Checkout</button>
+</section>
+
+<!-- Footer to match products.html -->
+<footer>
+  <p>&copy; 2025 My Online Store. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 

@@ -1,168 +1,58 @@
 <!--
-Name: Daisy Ibuoka
-Date: 03.01.2025
-CSC 372-01
+  Name: Daisy Ibuoka
+  Date: 03.01.2025
+  CSC 372-01
 
-Static Prototype - Admin Bulk Upload
+  Static Prototype - Admin Bulk Upload Page
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Bulk Upload</title>
-    <link rel="stylesheet" href="../public/css/admin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Bulk Upload</title>
+  <link rel="stylesheet" href="../public/css/admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Admin Navigation -->
-    <nav class="admin-nav">
-        <h1>Admin Panel</h1>
-        <ul>
-            <li><a href="dashboard.html">📊 Dashboard</a></li>
-            <li><a href="admin-upload.html" class="active">📂 Bulk Upload</a></li>
-            <li><a href="admin-products.html">🛍️ Product Listing</a></li>
-            <li><a href="#">🚪 Sign Out</a></li>
-        </ul>
-    </nav>
+  <!-- Admin Navigation -->
+  <nav class="admin-nav">
+    <h1>Admin Panel</h1>
+    <ul>
+      <li><a href="dashboard.html">📊 Dashboard</a></li>
+      <li><a href="admin-upload.html" class="active">📂 Bulk Upload</a></li>
+      <li><a href="admin-products.html">🛍️ Product Listing</a></li>
+      <li><a href="#">🚪 Sign Out</a></li>
+    </ul>
+  </nav>
 
-    <!-- Upload Section -->
-    <section class="upload-container">
-        <h2>📤 Bulk Upload Products</h2>
+  <!-- Upload Section -->
+  <section class="upload-container">
+    <h2>📤 Bulk Upload Products</h2>
 
-        <form>
-            <label for="upload-file">Upload JSON/CSV File:</label>
-            <input type="file" id="upload-file" accept=".json, .csv" disabled>
-            <button type="button">Upload</button>
-        </form>
+    <form>
+      <label for="upload-file">Upload JSON/CSV File:</label>
+      <input type="file" id="upload-file" accept=".json, .csv" disabled>
+      <button type="button" disabled>Upload</button>
+    </form>
 
-        <p id="upload-status">⚠️ Upload functionality is disabled in this prototype.</p>
-        <a href="../public/sample-products.json" download class="download-link">📥 Download Sample JSON Format</a>
+    <p id="upload-status">⚠️ Upload functionality is disabled in this prototype.</p>
 
-        <pre class="json-example">
+    <a href="../public/sample-products.json" download class="download-link">📥 Download Sample JSON Format</a>
+
+    <pre class="json-example">
 Example JSON format:
 [
   { "id": 1, "name": "Product A", "price": 10.99, "category": "Electronics" }
 ]
-        </pre>
-    </section>
+    </pre>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Online Store</p>
-    </footer>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-Name: Daisy Ibuoka
-Date: 03.01.2025
-CSC 372-01
-
-This script handles admin authentication and product bulk upload.
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Bulk Upload</title>
-    <link rel="stylesheet" href="../public/css/admin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-
-    <!-- Admin Navigation -->
-    <nav class="admin-nav">
-        <h1>Admin Panel</h1>
-        <ul>
-            <li><a href="dashboard.html">📊 Dashboard</a></li>
-            <li><a href="admin-upload.html" class="active">📂 Bulk Upload</a></li>
-            <li><a href="admin-products.html">🛍️ Product Listing</a></li>
-            <li><a href="#" onclick="signOut()">🚪 Sign Out</a></li>
-        </ul>
-    </nav>
-
-    <!-- Upload Section -->
-    <section class="upload-container">
-        <h2>📤 Bulk Upload Products</h2>
-
-        <form id="upload-form">
-            <label for="upload-file">Upload JSON/CSV File:</label>
-            <input type="file" id="upload-file" accept=".json, .csv">
-            <button type="submit">Upload</button>
-        </form>
-
-        <p id="upload-status"></p>
-        <a href="../public/sample-products.json" download class="download-link">📥 Download Sample JSON Format</a>
-
-        <pre class="json-example">
-Example JSON format:
-[
-  { "id": 1, "name": "Product A", "price": 10.99, "category": "Electronics" }
-]
-        </pre>
-    </section>
-
-    <script>
-        // ✅ Fix: Ensure admin authentication before allowing access
-        document.addEventListener("DOMContentLoaded", function () {
-            if (!sessionStorage.getItem("isLoggedIn")) {
-                alert("❌ Unauthorized! Redirecting to login...");
-                window.location.href = "../auth/login.html"; // ✅ Redirects to login if not authenticated
-            }
-        });
-
-        // ✅ Handle file upload
-        document.getElementById("upload-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const fileInput = document.getElementById("upload-file");
-            const file = fileInput.files[0];
-
-            if (!file) {
-                document.getElementById("upload-status").innerHTML = "⚠️ Please select a file.";
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    const products = JSON.parse(event.target.result);
-                    sessionStorage.setItem("uploadedProducts", JSON.stringify(products));
-                    document.getElementById("upload-status").innerHTML = "✅ File uploaded successfully!";
-                } catch (error) {
-                    document.getElementById("upload-status").innerHTML = "❌ Invalid JSON format!";
-                }
-            };
-
-            reader.readAsText(file);
-        });
-
-        // ✅ Function to handle logout
-        function signOut() {
-            sessionStorage.removeItem("isLoggedIn");
-            window.location.href = "../auth/login.html";
-        }
-    </script>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Online Store. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
--->

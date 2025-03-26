@@ -8,47 +8,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="../public/css/styles.css" />
 </head>
 <body>
 
-    <header>
-        <h1>Checkout</h1>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="cart.html">Cart</a>
-            <a href="checkout.html" class="active">Checkout</a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html" class="active">Checkout</a></li>
+        <li><a href="login.html">Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <h2>Order Summary</h2>
-        <!-- Static order summary content -->
-        <div id="checkout-summary">
-            <p><strong>Product 1</strong> x 2 - $20.00</p>
-            <p><strong>Product 2</strong> x 1 - $15.00</p>
-            <p><strong>Product 3</strong> x 1 - $10.00</p>
-        </div>
-        <h3 id="total-price">Total: $65.00</h3>
-        <button id="confirm-order">Confirm Order</button>
-    </main>
+  <main>
+    <h1>Checkout</h1>
 
-    <footer>
-        <p>&copy; 2025 Online Store</p>
-    </footer>
+    <section class="order-summary">
+      <h2>Order Summary</h2>
+      <ul>
+        <li>Product 1 × 2 - $40.00</li>
+        <li>Product 2 × 1 - $15.00</li>
+        <li>Product 3 × 1 - $10.00</li>
+      </ul>
 
-    <!-- Static version: Removed dynamic JS -->
-    <script>
-        // Placeholder function to simulate order confirmation in static mode
-        document.getElementById("confirm-order").addEventListener("click", function() {
-            alert("Your order has been confirmed!");
-            // In a static prototype, this would just show an alert
-        });
-    </script>
+      <p>Subtotal: $65.00</p>
+      <p>Tax (6.75%): $4.39</p>
+      <p>Delivery Fee: $5.00</p>
+      <p>Service Fee: $2.00</p>
+      <h3>Total: $76.39</h3>
+
+      <button id="confirm-order">Confirm Order</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Online Store. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("confirm-order").addEventListener("click", function () {
+      alert("✅ Your order has been confirmed!");
+    });
+  </script>
 
 </body>
 </html>
@@ -74,7 +82,6 @@
 
 
 
-<!DOCTYPE html>
 <!--
   Name: Daisy Ibuoka
   Date: 03.01.2025

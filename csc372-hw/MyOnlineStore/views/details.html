@@ -1,81 +1,71 @@
-<!--
+<!-- 
   Name: Daisy Ibuoka
   Date: 03.01.2025
   CSC 372-01
 
-  This is the static product details page.
+  Static Prototype - Product Details Page
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details - Fashion Hub</title>
+  <link rel="stylesheet" href="../public/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="login.html" id="auth-link">Sign In</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section class="product-detail">
-    <div class="product-container">
-        <!-- Static image, name, price, and description -->
-        <img id="product-image" src="images/product-placeholder.jpg" alt="Product Image">
-        <div class="product-info">
-            <h1 id="product-title">Sample Product</h1>
-            <p id="product-price">$25.00</p>
-            <p id="product-description">This is a sample product description. It provides all the essential details about the product.</p>
-            <button onclick="addToCart()">Add to Cart</button>
-        </div>
+  <!-- Header Section -->
+  <header>
+    <div class="logo-container">
+      <img src="../public/images/logo.png" alt="Fashion Hub Logo">
     </div>
-</section>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="products.html">Shop</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="../views/login.html">Sign In</a></li>
+        <li><a href="../auth/login.html">Admin Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<footer>
-    <p>&copy; 2025 My Online Store. All rights reserved.</p>
-</footer>
+  <!-- Product Details Section -->
+  <main class="product-details">
+    <div class="details-container">
+      <img src="../public/images/product1.jpg" alt="Stylish Two Piece" width="300">
+      <div class="details-info">
+        <h1>Stylish Two Piece</h1>
+        <p class="product-price">$39.99</p>
+        <p class="product-description">
+          This stylish two-piece set is perfect for any occasion. Made with premium materials, it offers both comfort and elegance.
+        </p>
+        <label for="quantity">Quantity:
+          <input type="number" id="quantity" min="1" value="1">
+        </label>
+        <br><br>
+        <button class="btn" onclick="alert('🛍️ Added to cart!')">Add to Cart</button>
+      </div>
+    </div>
+  </main>
 
-<script>
-    // Static cart functionality (no dynamic behavior, hardcoded data)
-    function addToCart() {
-        const product = {
-            name: "Sample Product",
-            price: 25.00,
-            image: "images/product-placeholder.jpg",
-            quantity: 1
-        };
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 Fashion Hub. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </footer>
 
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
-        let existingProduct = cart.find(item => item.name === product.name);
-
-        if (existingProduct) {
-            existingProduct.quantity += 1; // Increase quantity if already in cart
-        } else {
-            if (cart.length >= 3) {
-                alert("❌ You can only add up to 3 different items to your cart.");
-                return;
-            }
-            cart.push(product);
-        }
-
-        sessionStorage.setItem("cart", JSON.stringify(cart));
-        alert("🛒 Product added to cart!");
-        window.location.href = "cart.html"; // Redirect to cart page
-    }
-</script>
-
+  <script src="../public/js/main.js"></script>
 </body>
 </html>
-
-
 
 
 
